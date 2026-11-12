@@ -31,4 +31,23 @@ public class BankCustomer
         LastName = lastName;
         this.CustomerId = (s_nextCustomerId++).ToString("D10");
     }
+
+    // Retourne le nom complet du client
+    public string ReturnFullName()
+    {
+        return $"{FirstName} {LastName}";
+    }
+
+    // Met à jour le nom du client
+    public void UpdateName(string firstName, string lastName)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+    }
+
+    // Affiche les informations du client
+    public string DisplayCustomerInfo()
+    {
+        return $"Customer ID: {CustomerId}, Name: {ReturnFullName()}";
+    }
 }
