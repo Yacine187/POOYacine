@@ -31,4 +31,11 @@ public partial class BankCustomer
         get { return _lastName; }
         set { _lastName = value; }
     }
+        // Constructeur de copie
+    public BankCustomer(BankCustomer existingCustomer)
+    {
+        this.FirstName = existingCustomer.FirstName;
+        this.LastName = existingCustomer.LastName;
+        this.CustomerId = (s_nextCustomerId++).ToString("D10");
+    }
 }

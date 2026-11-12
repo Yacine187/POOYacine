@@ -113,3 +113,42 @@ Console.WriteLine($"Is account3 overdrawn? {account3.IsOverdrawn()}");
 Console.WriteLine("\nDisplaying customer and account information...");
 Console.WriteLine(customer1.DisplayCustomerInfo());
 Console.WriteLine(account1.DisplayAccountInfo());
+// Étape 7 : paramètres nommés et optionnels
+Console.WriteLine("\nDemonstrating named and optional parameters...");
+string customerId = customer1.CustomerId;
+double openingBalance = 1500;
+
+// ID client seul : balance et type par défaut
+BankAccount account4 = new BankAccount(customerId);
+Console.WriteLine(account4.DisplayAccountInfo());
+
+// ID client et solde d'ouverture
+BankAccount account5 = new BankAccount(customer1.CustomerId, openingBalance);
+Console.WriteLine(account5.DisplayAccountInfo());
+
+// ID client et paramètre nommé pour le type de compte
+BankAccount account6 = new BankAccount(customer2.CustomerId, accountType: "Checking");
+Console.WriteLine(account6.DisplayAccountInfo());
+
+// Tous les paramètres nommés, dans n'importe quel ordre
+BankAccount account7 = new BankAccount(accountType: "Checking", balance: 5000, customerIdNumber: customer2.CustomerId);
+Console.WriteLine(account7.DisplayAccountInfo());
+
+// Étape 8 : initialiseurs d'objets et constructeurs de copie
+Console.WriteLine("\nDemonstrating object initializers and copy constructors...");
+
+// Initialiseur d'objet
+BankCustomer customer4 = new BankCustomer("Mikaela", "Lee") { FirstName = "Mikaela", LastName = "Lee" };
+Console.WriteLine($"BankCustomer 4: {customer4.FirstName} {customer4.LastName} {customer4.CustomerId}");
+
+// Constructeur de copie
+BankCustomer customer5 = new BankCustomer(customer4);
+Console.WriteLine($"BankCustomer 5 (copy of customer4): {customer5.FirstName} {customer5.LastName} {customer5.CustomerId}");
+
+// Initialiseur d'objet
+BankAccount account8 = new BankAccount(customer4.CustomerId) { AccountType = "Savings" };
+Console.WriteLine($"Account 8: Account # {account8.AccountNumber}, type {account8.AccountType}, balance {account8.Balance}, rate {BankAccount.InterestRate}, customer ID {account8.CustomerId}");
+
+// Constructeur de copie
+BankAccount account9 = new BankAccount(account4);
+Console.WriteLine($"Account 9 (copy of account4): Account # {account9.AccountNumber}, type {account9.AccountType}, balance {account9.Balance}, rate {BankAccount.InterestRate}, customer ID {account9.CustomerId}");
